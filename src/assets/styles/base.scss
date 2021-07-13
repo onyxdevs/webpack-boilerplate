@@ -1,0 +1,86 @@
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+    text-rendering: optimizeLegibility;
+    background-color: $main-bg-color;
+    font-size: 16px;
+    scroll-behavior: smooth;
+
+    @include xxl {
+        font-size: 18px;
+    }
+}
+
+body {
+    font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+    color: $font-dark-color;
+    font-size: 0.875rem;
+    background-color: transparent;
+}
+
+/* Content selection color
+*************************************/
+::-webkit-selection {
+    background: $primary-accent;
+    color: #fff;
+}
+::-moz-selection {
+    background: $primary-accent;
+    color: #fff;
+}
+::selection {
+    background: $primary-accent;
+    color: #fff;
+}
+
+/* Main wrapper
+*************************************/
+.main {
+    width: 100%;
+    min-height: 100vh;
+    padding-right: 15px;
+    padding-left: 15px;
+
+    @include sm {
+        padding-right: $container-spacing;
+        padding-left: $container-spacing;
+    }
+}
+
+/************************************************************
+
+    Prevent browsing with no JS
+    Global warnings
+
+*************************************************************/
+html.no-js {
+    overflow: hidden;
+}
+.global-warning {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: $main-bg-color;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.35;
+    overflow: hidden;
+    z-index: 99;
+    color: $primary-accent;
+    padding: $container-spacing;
+
+    span {
+        font-size: 5rem;
+        line-height: 1;
+    }
+}

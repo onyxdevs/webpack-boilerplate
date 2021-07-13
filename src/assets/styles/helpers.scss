@@ -1,0 +1,180 @@
+/* Hide elements
+*************************************/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.4;
+}
+
+/* Grid
+*************************************/
+.container {
+    width: 100%;
+    max-width: none;
+    padding-right: $container-spacing;
+    padding-left: $container-spacing;
+}
+
+.row {
+    &--more-gaps {
+        --bs-gutter-x: 3rem;
+    }
+    &--more-gaps.v-spacing {
+        --bs-gutter-y: 3rem;
+    }
+    &.v-spacing {
+        --bs-gutter-y: 1.5rem;
+    }
+
+    > *:first-child {
+        margin-top: 0;
+    }
+}
+
+/* Spacings
+*************************************/
+.mb {
+    &-xs {
+        margin-bottom: 10px;
+    }
+    &-sm {
+        margin-bottom: 30px;
+    }
+    &-md {
+        margin-bottom: 50px;
+    }
+    &-lg {
+        margin-bottom: 70px;
+    }
+    &-xl {
+        margin-bottom: 90px;
+    }
+    &-subsection {
+        margin-bottom: 30px;
+    }
+    &-section {
+        margin-bottom: 50px;
+    }
+
+    @include md {
+        &-subsection {
+            margin-bottom: 40px;
+        }
+    }
+
+    @include xl {
+        &-section {
+            margin-bottom: 6rem;
+        }
+    }
+
+    @include lg {
+        &-xs {
+            margin-bottom: 20px;
+        }
+        &-sm {
+            margin-bottom: 50px;
+        }
+        &-md {
+            margin-bottom: 70px;
+        }
+        &-lg {
+            margin-bottom: 100px;
+        }
+        &-xl {
+            margin-bottom: 140px;
+        }
+    }
+
+    @include xxl {
+        &-xs {
+            margin-bottom: 40px;
+        }
+        &-sm {
+            margin-bottom: 70px;
+        }
+        &-md {
+            margin-bottom: 100px;
+        }
+        &-lg {
+            margin-bottom: 130px;
+        }
+        &-xl {
+            margin-bottom: 170px;
+        }
+    }
+}
+
+/* Hide elements
+*************************************/
+@include md {
+    .hide-md {
+        display: none;
+    }
+}
+@include lg {
+    .hide-lg {
+        display: none;
+    }
+}
+
+/* Alignment
+*************************************/
+.text-left {
+    text-align: left;
+}
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+
+/* Spinner
+*************************************/
+.loader-abs {
+    @include absolute(top 0 right 0 bottom 0 left 0);
+    background-color: rgba(white, 0.85);
+    z-index: 50;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+
+    .loading & {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+.loader-abs .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-right: -50%;
+}
+
+.loader {
+    display: block;
+    font-size: 0;
+    text-indent: -99999em;
+    margin: 55px auto;
+    width: 2.25rem;
+    height: 2.25rem;
+}
+.loader > :first-child {
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 3px solid rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    border-top-color: $primary-accent;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

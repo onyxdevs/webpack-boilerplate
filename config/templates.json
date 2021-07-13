@@ -1,0 +1,8 @@
+{
+    "index": {
+        "title": "Webpack Boilerplate",
+        "name": "Webpack Boilerplate",
+        "template": "src/pages/page.ejs",
+        "type": "default"
+    }
+}

@@ -1,0 +1,83 @@
+.input {
+    position: relative;
+    text-align: left;
+    color: $font-dark-color;
+    width: 100%;
+    line-height: 0; // Remove bottom space for textarea fields
+    $input-wrapper: &;
+
+    &__field {
+        border: 1px solid $border-color;
+        border-radius: calc(#{$box-corner} * 0.5);
+        width: 100%;
+        height: var(--input-height);
+        outline: 0;
+        color: $font-dark-color;
+        line-height: 1;
+        padding: 0.625rem 0.875rem;
+        background-color: #fff;
+        transition: all 0.15s ease-in-out;
+
+        // Placeholder styles
+        &::-webkit-input-placeholder {
+            color: rgba($font-dark-color, 0.5);
+        }
+        &:-moz-placeholder {
+            color: rgba($font-dark-color, 0.5);
+        }
+        &::-moz-placeholder {
+            color: rgba($font-dark-color, 0.5);
+        }
+        &:-ms-input-placeholder {
+            color: rgba($font-dark-color, 0.5);
+        }
+
+        #{$input-wrapper}:not(.invalid) &:not([readonly]):focus {
+            border-color: $primary-accent;
+            box-shadow: 0 0 0 3px rgba($primary-accent, 0.15);
+        }
+        #{$input-wrapper}.invalid & {
+            border-color: $danger-color;
+        }
+        #{$input-wrapper}.invalid &:not([readonly]):focus {
+            box-shadow: 0 0 0 3px rgba($danger-color, 0.15);
+        }
+
+        &[readonly]:hover {
+            cursor: not-allowed;
+        }
+    }
+    & textarea {
+        line-height: 1.4;
+    }
+    // prettier-ignore
+    html.no-touch &:not(.invalid) &__field:not([readonly]):not(:focus):hover {
+        border-color: rgba(darken($primary-accent, 8%), 0.5);
+    }
+}
+
+/* Change Autocomplete styles in Chrome
+*****************************************/
+// prettier-ignore
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: $font-dark-color;
+    -webkit-box-shadow: 0 0 0 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0, border 0.15s cubic-bezier(0.81, 0.16, 0.19, 0.9), box-shadow 0.15s cubic-bezier(0.81, 0.16, 0.19, 0.9);
+}
+
+/* Hide browser icons for search input
+*****************************************/
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+    display: none;
+}

@@ -1,0 +1,48 @@
+.select {
+    &__inner {
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: 1rem;
+            height: 1rem;
+            top: 50%;
+            transform: translate(8px, -50%); // Because the icon has some padding inside it!
+            right: 1.25rem;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M18 9.7l-1.4-1.4-4.6 4.6-4.6-4.6L6 9.7l6 6 6-6z'/%3E%3C/svg%3E");
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            pointer-events: none;
+        }
+    }
+
+    &__field {
+        appearance: none;
+        background-color: white;
+        color: rgba($font-dark-color, 0.5);
+        border: 1px solid $border-color;
+        border-radius: calc(#{$box-corner} * 0.5);
+        width: 100%;
+        height: var(--input-height);
+        padding: 0.375rem 2.5rem 0.375rem 0.9375rem;
+        transition: all 0.3s cubic-bezier(0.81, 0.16, 0.19, 0.9);
+
+        option {
+            color: $font-dark-color;
+        }
+
+        @include md {
+            min-height: 43px;
+            padding: 0.5rem 2.5rem 0.5rem 0.9375rem;
+        }
+    }
+    html.no-touch &__field:not([readonly]):not(:focus):hover {
+        border-color: rgba(darken($primary-accent, 8%), 0.5);
+    }
+    &__field:not([readonly]):focus {
+        border-color: $primary-accent;
+        box-shadow: 0 0 0 3px rgba($primary-accent, 0.15);
+    }
+}

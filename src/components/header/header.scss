@@ -1,0 +1,155 @@
+.header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    z-index: 5;
+    background-color: white;
+    padding: 0 15px;
+    border-bottom: 1px solid rgba($font-dark-color, 0.05);
+    transition: padding 0.5s cubic-bezier(0.25, 0.7, 0.13, 0.84);
+
+    body.admin-bar & {
+        top: 46px;
+
+        @include lg {
+            top: 32px;
+        }
+    }
+    body.admin-bar &.scrolled {
+        top: 0;
+
+        @include md {
+            top: 46px;
+        }
+        @include lg {
+            top: 32px;
+        }
+    }
+
+    @include sm {
+        padding: 0 40px;
+    }
+
+    &__logo {
+        font-weight: 600;
+        font-size: 1.25rem;
+        display: flex;
+        align-items: center;
+        color: $font-dark-color;
+
+        svg {
+            height: 2rem;
+            fill: $font-dark-color;
+        }
+    }
+
+    &__burger {
+        perspective: 600px;
+        width: 48px;
+        height: 48px;
+        position: relative;
+        cursor: pointer;
+        margin: 1rem 0 1rem auto;
+        border: none;
+        background-color: transparent;
+
+        @include xl {
+            display: none;
+        }
+
+        body.menu-triggered {
+            pointer-events: none;
+        }
+
+        &__inner {
+            span {
+                transform: rotateY(0deg);
+                transform-style: preserve-3d;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                background-color: black;
+                backface-visibility: hidden;
+                will-change: transform, background-color;
+                transition: transform 0.6s cubic-bezier(0.2, 0.64, 0.48, 1.24),
+                    background-color 0.6s cubic-bezier(0.2, 0.64, 0.48, 1.24);
+
+                header.scrolled & {
+                    background-color: black;
+                }
+
+                &:before,
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 18px;
+                    height: 2px;
+                    border-radius: 1px;
+                    top: 50%;
+                    left: 50%;
+                    backface-visibility: hidden;
+                    background-color: white;
+                    transform: translate(-50%, -50%) rotate(0deg) translateZ(6px);
+                    will-change: transform, background-color;
+                    transition: background-color 0.6s cubic-bezier(0.2, 0.64, 0.48, 1.24);
+
+                    header.scrolled & {
+                        background-color: #fff;
+                    }
+                }
+                &:first-child {
+                    background-color: $primary-accent;
+                    transform: rotateY(-180deg);
+
+                    header.scrolled & {
+                        background-color: $primary-accent;
+                    }
+
+                    &:before {
+                        background-color: #fff;
+                        transform: translate(-50%, -50%) rotate(-45deg) translateZ(6px);
+                    }
+                    &:after {
+                        background-color: #fff;
+                        transform: translate(-50%, -50%) rotate(45deg) translateZ(6px);
+                    }
+                }
+                &:last-child {
+                    transform: rotateY(0);
+
+                    &:before {
+                        transform: translate(-50%, -50%) rotate(180deg) translateZ(6px);
+                        box-shadow: 0 -5px 0 white, 0 5px 0 white;
+                        will-change: box-shadow;
+                        transition: box-shadow 0.6s cubic-bezier(0.2, 0.64, 0.48, 1.24);
+
+                        header.scrolled & {
+                            box-shadow: 0 -5px 0 #fff, 0 5px 0 #fff;
+                        }
+                    }
+                    &:after {
+                        display: none;
+                    }
+                }
+
+                body.menu-triggered &:first-child,
+                body.menu-opened &:first-child {
+                    transform: rotateY(0);
+                }
+                body.menu-triggered &:last-child,
+                body.menu-opened &:last-child {
+                    transform: rotateY(-180deg);
+
+                    &:before {
+                        transform: translate(-50%, -50%) rotate(0deg) translateZ(6px);
+                    }
+                }
+            }
+        }
+    }
+}

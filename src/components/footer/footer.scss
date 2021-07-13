@@ -1,0 +1,59 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    background-color: $dark-bg-color;
+
+    &__row {
+        display: flex;
+        font-weight: 700;
+
+        &:first-child {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        &:last-child {
+            background-color: $dark-bg-color-shaded;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            font-size: 0.8125rem;
+            flex-direction: column;
+            align-items: center;
+
+            @include sm {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+
+        a {
+            color: rgba(white, 0.5);
+            transition: all 0.15s ease-in-out;
+
+            &:hover {
+                color: white;
+            }
+        }
+    }
+    &__lang {
+        margin-left: auto;
+
+        svg {
+            width: 1.5rem;
+            margin-left: 0.75rem;
+        }
+    }
+    &__copyright {
+        color: rgba(white, 0.5);
+    }
+    &__by {
+        margin-top: 0.875rem;
+
+        @include sm {
+            margin-top: 0;
+            margin-left: auto;
+        }
+
+        color: rgba(white, 0.5);
+    }
+}

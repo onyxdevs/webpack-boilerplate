@@ -1,0 +1,90 @@
+.file {
+    $file: &;
+    $paddings: 0.675rem 0.9375rem;
+
+    html.no-touch &:hover {
+        cursor: pointer;
+    }
+    html.no-touch &.disabled:hover {
+        cursor: not-allowed;
+    }
+
+    &__content {
+        position: relative;
+        display: flex;
+        align-items: center;
+        border: 1px solid $border-color;
+        border-radius: calc(#{$box-corner} * 0.5);
+        background-color: $border-color;
+        line-height: 1.3;
+        overflow: hidden;
+        transition: all 0.15s ease-in-out;
+
+        #{$file}.active & {
+            border-color: $secondary-accent;
+            background-color: $secondary-accent;
+        }
+        html.no-touch #{$file}:not(.disabled):hover & {
+            border-color: rgba(darken($primary-accent, 8%), 0.5);
+            background-color: $primary-accent;
+        }
+        #{$file}.disabled & {
+            opacity: 0.65;
+        }
+    }
+
+    &__select {
+        flex-shrink: 0;
+        padding: $paddings;
+        font-weight: 500;
+        transition: all 0.15s ease-in-out;
+
+        html.no-touch #{$file}:not(.disabled):hover & {
+            color: white;
+            cursor: pointer;
+        }
+        html.no-touch #{$file}.disabled:hover & {
+            cursor: not-allowed;
+        }
+        #{$file}.active & {
+            color: white;
+        }
+    }
+
+    &__name {
+        flex-grow: 1;
+        padding: $paddings;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        height: var(--input-height);
+
+        span {
+            display: block;
+        }
+
+        html.no-touch #{$file}:not(.disabled):hover & {
+            cursor: pointer;
+        }
+        html.no-touch #{$file}.disabled:hover & {
+            cursor: not-allowed;
+        }
+    }
+
+    &__field {
+        z-index: 1;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0;
+
+        html.no-touch #{$file}:not(.disabled):hover & {
+            cursor: pointer;
+        }
+        html.no-touch #{$file}.disabled:hover & {
+            cursor: not-allowed;
+        }
+    }
+}

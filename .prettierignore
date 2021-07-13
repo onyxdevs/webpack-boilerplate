@@ -1,0 +1,5 @@
+mixins.scss
+*.html
+*.ejs
+*.css
+dist

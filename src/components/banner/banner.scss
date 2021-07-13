@@ -1,0 +1,72 @@
+.banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding: 2rem;
+    overflow: hidden;
+    height: 300px;
+    border-bottom: 1px solid rgba($font-dark-color, 0.05);
+
+    @include sm {
+        margin-right: calc(#{$container-spacing} * -1);
+        margin-left: calc(#{$container-spacing} * -1);
+    }
+    @include lg {
+        height: 600px;
+    }
+
+    &--none {
+        background-color: darken($main-bg-color, 6%);
+        height: 300px;
+    }
+
+    & [data-parallax] {
+        @include absolute(top right bottom left);
+        z-index: 0;
+    }
+
+    &__img-wrapper {
+        @include absolute(top right bottom left);
+        padding-bottom: 0 !important;
+        z-index: 0;
+        transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+
+        &:before {
+            content: '';
+            @include absolute(top right bottom left);
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    }
+    &__item:hover &__img-wrapper {
+        transform: scale(1.05);
+    }
+    &__img {
+        object-fit: cover;
+        object-position: center center;
+        z-index: -1;
+    }
+
+    &__title {
+        color: white;
+        font-size: 2rem;
+        font-weight: 800;
+        text-align: center;
+        text-transform: capitalize;
+        z-index: 1;
+        max-width: 800px;
+        transition: color 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+        @include sm {
+            font-size: 3rem;
+        }
+        @include md {
+            font-size: 4rem;
+        }
+    }
+    &--none &__title {
+        color: $font-dark-color;
+    }
+}

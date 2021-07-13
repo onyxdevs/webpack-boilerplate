@@ -1,0 +1,22 @@
+/* Colors
+*************************************/
+$primary-accent: #1c6ef7;
+$secondary-accent: rgb(119, 223, 255);
+$main-bg-color: #f4f6f8;
+$dark-bg-color: #0f1547;
+$dark-bg-color-shaded: #171e5a;
+$font-dark-color: hsl(208, 100%, 18%);
+$font-light-color: rgba($font-dark-color, 0.5);
+$border-color: rgba($font-dark-color, 0.1);
+
+$success-color: #35c636;
+$danger-color: #ed2554;
+$warning-color: #de9c3e;
+
+/* Border radius
+*************************************/
+$box-corner: 1rem;
+
+/* Spaces
+*************************************/
+$container-spacing: 4vw;

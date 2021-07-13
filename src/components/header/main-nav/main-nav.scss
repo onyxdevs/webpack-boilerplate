@@ -1,0 +1,209 @@
+.main-nav {
+    position: absolute;
+    top: calc(100% + 1px);
+    right: 0;
+    left: 0;
+    background-color: #fff;
+    height: 0;
+    overflow: hidden;
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+
+    @include xl {
+        display: flex;
+        margin-left: auto;
+        position: static;
+        top: auto;
+        right: auto;
+        left: auto;
+        overflow: visible;
+        background-color: transparent;
+        height: auto;
+    }
+
+    body.menu-opened & {
+        height: calc(100vh - 95px - 40px);
+        overflow-y: auto;
+    }
+    body.menu-opened .header.scrolled & {
+        height: calc(100vh - 95px);
+    }
+
+    &__list {
+        display: flex;
+        text-transform: uppercase;
+        flex-direction: column;
+        margin: 0 calc(-40px + -0.625rem);
+        padding: 1.5rem 0;
+        opacity: 0;
+        transform: translateY(80px);
+        transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+
+        body.menu-opened & {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @include xl {
+            margin: 0 calc(-0.5rem + -0.625rem);
+            padding: 0;
+            flex-direction: row;
+            align-items: center;
+            opacity: 1;
+            transform: translateY(0);
+            transition: none;
+        }
+    }
+    &__item {
+        padding: 0 15px;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid rgba($font-dark-color, 0.15);
+        }
+
+        @include sm {
+            padding: 0 40px;
+        }
+        @include xl {
+            padding: 0 0.5rem;
+
+            &:not(:last-child) {
+                border-bottom: none;
+            }
+        }
+
+        &.has-children {
+            position: relative;
+        }
+    }
+    &__link {
+        position: relative;
+        display: block;
+        color: $font-dark-color;
+        font-size: 1rem;
+        font-weight: 700;
+        padding: 1.5rem 0.625rem;
+        line-height: 1.3;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        white-space: nowrap;
+        transition: color 0.15s ease-in-out;
+
+        .current-menu-parent > &,
+        .current-menu-item > &,
+        .active > &,
+        &:hover {
+            color: $primary-accent;
+        }
+
+        @include xl {
+            padding: 1.25rem 0.625rem;
+            font-size: 0.875rem;
+        }
+
+        .has-children > & {
+            padding-right: 1.375rem;
+
+            &:after {
+                content: '';
+                position: absolute;
+                width: 1rem;
+                height: 1rem;
+                top: 50%;
+                transform: translate(6px, -50%); // Because the icon has some padding inside it!
+                right: 1rem;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M18 9.7l-1.4-1.4-4.6 4.6-4.6-4.6L6 9.7l6 6 6-6z'/%3E%3C/svg%3E");
+                background-position: center center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                pointer-events: none;
+
+                @include lg {
+                    right: 0.375rem;
+                }
+            }
+        }
+
+        position: relative;
+
+        // Hover effect
+        &:before {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background-color: $primary-accent;
+            transform: scaleX(0);
+            transform-origin: center top;
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .current-menu-parent > &:before,
+        .current-menu-item > &:before,
+        .active > &:before,
+        &:focus:before,
+        &:hover:before {
+            transform: scaleX(1);
+        }
+    }
+    span#{&}__link:hover {
+        cursor: default;
+    }
+
+    &__submenu {
+        margin-top: -0.3125rem;
+        margin-left: 1rem;
+        padding-bottom: 0.75rem;
+
+        @include xl {
+            position: absolute;
+            top: 100%;
+            width: 12rem;
+            background-color: white;
+            border: 1px solid $border-color;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(1rem);
+            pointer-events: none;
+            margin-top: 0;
+            margin-left: 0;
+            padding-bottom: 0;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+
+            .has-children:hover > & {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+                pointer-events: auto;
+            }
+
+            &__item {
+                &:not(:last-child) {
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                }
+            }
+        }
+
+        &__link {
+            display: block;
+            padding: 0.625rem 1rem;
+            color: $font-dark-color;
+            line-height: 1.4;
+            font-weight: 700;
+            font-size: 0.8125rem;
+            transition: color 0.15s ease-in-out;
+
+            @include xl {
+                padding: 0.75rem 1rem;
+            }
+
+            .current-menu-item > &,
+            &:hover {
+                color: $primary-accent;
+            }
+        }
+    }
+}

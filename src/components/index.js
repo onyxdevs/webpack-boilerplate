@@ -1,0 +1,12 @@
+import './footer';
+import './socials';
+import './header';
+import './header/main-nav';
+import './banner';
+import './news';
+import './form';
+import './alert';
+import './button';
+import './text-block';
+import './pagination';
+import './langs';
