@@ -70,7 +70,7 @@
             background-color: darken($primary-accent, 7%);
         }
         &:not([disabled]):active {
-            box-shadow: 0px 0px 0px 3px rgba($primary-accent, 0.15);
+            box-shadow: 0 0 0 3px rgba($primary-accent, 0.15);
         }
 
         &.button--inverse {
@@ -83,7 +83,7 @@
             background-color: rgba($primary-accent, 0.15);
         }
         &.button--inverse:not([disabled]):active {
-            box-shadow: 0px 0px 0px 3px rgba($primary-accent, 0.075);
+            box-shadow: 0 0 0 3px rgba($primary-accent, 0.075);
         }
     }
     &--none {
@@ -112,7 +112,7 @@
             background-color: darken($danger-color, 10%);
         }
         &:not([disabled]):active {
-            box-shadow: 0px 0px 0px 3px rgba-to-rgb(rgba($danger-color, 0.3));
+            box-shadow: 0 0 0 3px rgba-to-rgb(rgba($danger-color, 0.3));
         }
 
         &.button--inverse {
@@ -125,7 +125,7 @@
             background-color: rgba-to-rgb(rgba($danger-color, 0.15));
         }
         &.button--inverse:not([disabled]):active {
-            box-shadow: 0px 0px 0px 3px rgba-to-rgb(rgba($danger-color, 0.075));
+            box-shadow: 0 0 0 3px rgba-to-rgb(rgba($danger-color, 0.075));
         }
     }
     &--success {
@@ -138,7 +138,7 @@
             background-color: darken($success-color, 10%);
         }
         &:not([disabled]):active {
-            box-shadow: 0px 0px 0px 3px rgba-to-rgb(rgba($success-color, 0.3));
+            box-shadow: 0 0 0 3px rgba-to-rgb(rgba($success-color, 0.3));
         }
 
         &.button--inverse {
@@ -151,7 +151,7 @@
             background-color: rgba-to-rgb(rgba($success-color, 0.15));
         }
         &.button--inverse:not([disabled]):active {
-            box-shadow: 0px 0px 0px 3px rgba-to-rgb(rgba($success-color, 0.2));
+            box-shadow: 0 0 0 3px rgba-to-rgb(rgba($success-color, 0.2));
         }
     }
     &--grey {
@@ -163,7 +163,7 @@
             background-color: rgba(darken($font-dark-color, 10%), 0.1);
         }
         &:not([disabled]):active {
-            box-shadow: 0px 0px 0px 3px rgba-to-rgb(rgba($font-dark-color, 0.05));
+            box-shadow: 0 0 0 3px rgba-to-rgb(rgba($font-dark-color, 0.05));
         }
     }
 
