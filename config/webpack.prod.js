@@ -8,7 +8,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 const paths = require('./paths');
-const common = require('./webpack.common.js');
+const common = require('./webpack.common');
 
 module.exports = merge(common, {
     mode: 'production',
@@ -71,9 +71,7 @@ module.exports = merge(common, {
         // Note: style-loader is for development, MiniCssExtractPlugin is for production
         new MiniCssExtractPlugin({
             filename: 'app.[name].css',
-            chunkFilename: '[id].css',
-            disable: false,
-            allChunks: true
+            chunkFilename: '[id].css'
         }),
 
         /**
