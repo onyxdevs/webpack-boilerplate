@@ -78,7 +78,7 @@ import { logger } from './utils';
                 // - scaling the inner image
                 // - translating the item's title
                 // we interpolate between the previous and current value to achieve a smooth effect
-                imageScale: {
+                scaleEffect: {
                     // interpolated value
                     previous: 0,
                     // current value
@@ -100,13 +100,13 @@ import { logger } from './utils';
                     }
                 },
 
-                titleTranslationY: {
+                translateEffect: {
                     previous: 0,
                     current: 0,
                     ease: 0.1,
                     fromValue: positionY,
                     setValue: () => {
-                        const { fromValue } = this.renderedStyles.titleTranslationY;
+                        const { fromValue } = this.renderedStyles.translateEffect;
                         const toValue = -1 * fromValue;
                         const val = MathUtils.map(
                             this.props.top - docScroll,
@@ -200,11 +200,11 @@ import { logger } from './utils';
         layout() {
             // scale the image
             if (this.DOM.image !== '')
-                this.DOM.image.style.transform = `scale3d(${this.renderedStyles.imageScale.previous},${this.renderedStyles.imageScale.previous},1)`;
+                this.DOM.image.style.transform = `scale3d(${this.renderedStyles.scaleEffect.previous},${this.renderedStyles.scaleEffect.previous},1)`;
 
             // translate the title
             if (this.DOM.title !== '')
-                this.DOM.title.style.transform = `translate3d(0,${this.renderedStyles.titleTranslationY.previous}px,0)`;
+                this.DOM.title.style.transform = `translate3d(0,${this.renderedStyles.translateEffect.previous}px,0)`;
         }
     }
 
