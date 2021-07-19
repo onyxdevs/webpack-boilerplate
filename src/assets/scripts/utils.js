@@ -13,18 +13,18 @@ class Logger {
     constructor() {
         this.logs = [];
 
-        // Markis console note
+        // Console note
         if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
             const t = [
-                '\n %c Made with ♥ by Markis Creative %c %c %c http://markis.com.tr/ \n\n',
-                'color: #fff; background: #b21766; padding:5px 0;',
+                '\n %c Made with ♥ by Onyx %c %c %c https://onyxdev.net/ \n\n',
+                'color: #fff; background: #b0976d; padding:5px 0;',
                 'background: #494949; padding:5px 0;',
                 'background: #494949; padding:5px 0;',
                 'color: #fff; background: #1c1c1c; padding:5px 0;'
             ];
             window.console.log.apply(console, t);
         } else if (window.console) {
-            window.console.log('Made with love ♥ Markis Creative - http://markis.com.tr/');
+            window.console.log('Made with ♥ by Onyx - https://onyxdev.net/');
         }
     }
 
