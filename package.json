@@ -21,6 +21,10 @@
         "image-optimization",
         "Vanilla"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/onyxdevs/webpack-boilerplate.git"
+    },
     "devDependencies": {
         "@babel/core": "^7.12.1",
         "@babel/plugin-proposal-class-properties": "^7.12.1",
